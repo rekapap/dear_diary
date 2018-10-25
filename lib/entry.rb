@@ -30,8 +30,12 @@ class Entry
   end
 
   def self.create(title:, body:)
-    result = DatabaseConnection.query("INSERT INTO entries (title, body) VALUES('#{title}', '#{body}') RETURNING id, title, body;")
-    result = result.first
+    result = DatabaseConnection.query("INSERT INTO entries (title, body) VALUES('#{title}', '#{body}') RETURNING id, title, body;").first
+    Entry.new(id: result['id'], title: result['title'], body: result['body'])
+  end
+
+  def self.update(id:, title:, body:)
+    result = DatabaseConnection.query("UPDATE entries SET title = '#{title}', body = '#{body}' WHERE id = #{id} RETURNING id, title, body;").first
     Entry.new(id: result['id'], title: result['title'], body: result['body'])
   end
 end

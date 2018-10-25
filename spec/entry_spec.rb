@@ -40,4 +40,15 @@ describe Entry do
       expect(found_entry.id).to eq entry.id
     end
   end
+
+  describe '.update' do
+    it 'updates an exsisiting entry' do
+      entry = Entry.create(title: "My post 1", body: "BODY 1")
+      updated_entry = Entry.update(id: entry.id, title: "New title", body: "New body")
+
+      expect(updated_entry.id).to eq entry.id
+      expect(updated_entry.title).to eq 'New title'
+      expect(updated_entry.body).to eq 'New body'
+    end
+  end
 end

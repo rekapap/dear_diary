@@ -1,9 +1,12 @@
 <ul>
 <% @entries.each do |entry| %>
-  <li>
+  <li class='entry' id="entry-<%= entry.id %>">
     <a href="entries/<%= entry.id %>">
       <%= entry.title%>
     </a>
+    <form action="/entries/<%= entry.id %>/edit" method="get">
+        <input type="submit" value="Edit" />
+      </form>
   </li>
 <% end %>
 </ul>
