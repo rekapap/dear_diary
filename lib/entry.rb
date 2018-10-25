@@ -38,4 +38,8 @@ class Entry
     result = DatabaseConnection.query("UPDATE entries SET title = '#{title}', body = '#{body}' WHERE id = #{id} RETURNING id, title, body;").first
     Entry.new(id: result['id'], title: result['title'], body: result['body'])
   end
+
+  def self.delete(id:)
+    DatabaseConnection.query("DELETE FROM entries WHERE id = #{id}")
+  end
 end

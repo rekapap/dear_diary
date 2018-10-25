@@ -5,8 +5,12 @@
       <%= entry.title%>
     </a>
     <form action="/entries/<%= entry.id %>/edit" method="get">
-        <input type="submit" value="Edit" />
-      </form>
+      <input type="submit" value="Edit" />
+    </form>
+    <form action="/entries/<%= entry.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete" />
+    </form>
   </li>
 <% end %>
 </ul>

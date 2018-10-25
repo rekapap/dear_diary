@@ -4,6 +4,6 @@ feature 'Adding a new diary entry' do
     fill_in('title', with: 'My test entry title')
     fill_in('body', with: 'My test entry body')
     click_button('Submit')
-    expect(page).to have_content 'My test entry title My test entry body'
+    expect(page).to have_content 'My test entry title'
   end
 end

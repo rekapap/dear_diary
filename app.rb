@@ -20,7 +20,7 @@ class DearDiary < Sinatra::Base
   end
 
   post '/entries' do
-    Entry.new(title: params[:title], body: params[:body])
+    Entry.create(title: params[:title], body: params[:body])
     redirect '/entries'
   end
 
@@ -36,8 +36,13 @@ class DearDiary < Sinatra::Base
 
   patch '/entries/:id' do
     Entry.update(id: params[:id], title: params[:title], body: params[:body])
-    redirect "entries/#{params[:id]}"
+    redirect "/entries/#{params[:id]}"
   end
 
+  delete '/entries/:id' do
+    Entry.delete(id: params[:id])
+    redirect '/entries'
+  end
+  
   run! if app_file == $PROGRAM_NAME
 end

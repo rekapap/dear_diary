@@ -51,4 +51,13 @@ describe Entry do
       expect(updated_entry.body).to eq 'New body'
     end
   end
+
+  describe '.delete' do
+    it 'deletes an exsisiting entry' do
+      entry = Entry.create(title: "My post 1", body: "BODY 1")
+      Entry.delete(id: entry.id)
+
+      expect(Entry.all.length).to eq 0
+    end
+  end
 end
