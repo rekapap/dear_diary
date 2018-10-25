@@ -5,8 +5,7 @@ describe Entry do
   describe '.all' do
     it 'returns a list of entries' do
       entry = Entry.create(title: "My post 1", body: "BODY 1")
-      p entry
-      puts
+      
       Entry.create(title: "My post 2", body: "BODY 2")
       Entry.create(title: "My post 3", body: "BODY 3")
 
