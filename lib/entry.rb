@@ -20,6 +20,15 @@ class Entry
     end
   end
 
+  def self.find(id:)
+    entry = DatabaseConnection.query("SELECT * FROM entries WHERE id='#{id}';").first
+    Entry.new(
+      title: entry['title'],
+      body: entry['body'],
+      id: entry['id']
+    )
+  end
+
   def self.create(title:, body:)
     result = DatabaseConnection.query("INSERT INTO entries (title, body) VALUES('#{title}', '#{body}') RETURNING id, title, body;")
     result = result.first

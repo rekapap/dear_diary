@@ -1,4 +1,4 @@
-feature 'Viewing enties title' do
+feature 'Viewing list of entrie\'s title' do
   feature 'visiting the homepage' do
     scenario 'the page title is visible' do
       visit '/'
@@ -6,7 +6,7 @@ feature 'Viewing enties title' do
     end
   end
 
-  feature 'viewing entries title' do
+  feature 'viewing entries\'s title' do
     scenario 'entries title links are visible' do
       entry1 = Entry.create(title: 't1', body: 'p1')
       entry2 = Entry.create(title: 't2', body: 'p2')

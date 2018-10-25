@@ -24,5 +24,10 @@ class DearDiary < Sinatra::Base
     redirect '/entries'
   end
 
+  get '/entries/:id' do
+    @entry = Entry.find(id: params[:id])
+    erb :'entries/entry'
+  end
+
   run! if app_file == $PROGRAM_NAME
 end
