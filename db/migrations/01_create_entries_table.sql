@@ -1,0 +1,2 @@
+CREATE DATABASE "dear_diary";
+CREATE TABLE enteries(id SERIAL PRIMARY KEY, title VARCHAR (60));
