@@ -42,10 +42,9 @@ class DearDiary < Sinatra::Base
 
   patch '/entries/:id' do
     params[:body]
-    # result = JSON.parse(param)['ops'].first['insert']
-    Entry.update(id: params[:id], title: params[:title], body: params[:editordata])
+    Entry.update(id: params[:id], title: params[:title],
+                 body: params[:editordata])
     redirect "/entries/#{params[:id]}"
   end
-  
   run! if app_file == $PROGRAM_NAME
 end

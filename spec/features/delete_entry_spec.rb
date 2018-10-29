@@ -1,6 +1,6 @@
 feature 'Deleting a diary entry' do
   scenario 'A user can delete ann entry from Dear Diary' do
-    entry = Entry.create(title: 'Blog Delete', body: "Blog Body")
+    entry = Entry.create(title: 'Blog Delete', body: 'Blog Body')
 
     visit('/entries')
     click_button('Delete')

@@ -1,16 +1,22 @@
-<ul>
-<% @entries.each do |entry| %>
-  <li class='entry' id="entry-<%= entry.id %>">
-    <a href="entries/<%= entry.id %>">
-      <%= entry.title%>
-    </a>
-    <form action="/entries/<%= entry.id %>/edit" method="get">
-      <input type="submit" value="Edit" />
-    </form>
-    <form action="/entries/<%= entry.id %>" method="post">
-      <input type="hidden" name="_method" value="DELETE" />
-      <input type="submit" value="Delete" />
-    </form>
-  </li>
-<% end %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+  <ul>
+  <% @entries.each do |entry| %>
+    <li class='entry' id="entry-<%= entry.id %>">
+      <a href="entries/<%= entry.id %>">
+        <%= entry.title%>
+      </a>
+      <form action="/entries/<%= entry.id %>/edit" method="get">
+        <input type="submit" value="Edit" />
+      </form>
+      <form action="/entries/<%= entry.id %>" method="post">
+        <input type="hidden" name="_method" value="DELETE" />
+        <input type="submit" value="Delete" />
+      </form>
+    </li>
+  <% end %>
+  </ul>
+</body>

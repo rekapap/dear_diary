@@ -14,9 +14,10 @@ feature 'Viewing list of entrie\'s title' do
 
       visit '/entries'
 
-      expect(page).to have_link("#{entry1.title}", href: "entries/#{entry1.id}")
-      expect(page).to have_link("#{entry2.title}",  href: "entries/#{entry2.id}")
-      expect(page).to have_link("#{entry3.title}", href: "entries/#{entry3.id}")
+      expect(page).to have_link(entry1.title.to_s, href: "entries/#{entry1.id}")
+      expect(page).to have_link(entry2.title.to_s,
+                                href: "entries/#{entry2.id}")
+      expect(page).to have_link(entry3.title.to_s, href: "entries/#{entry3.id}")
     end
   end
 end
