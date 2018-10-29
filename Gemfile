@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'capybara'
 gem 'flog'
+gem 'json'
 gem 'pg'
 gem 'pry'
 gem 'rspec'

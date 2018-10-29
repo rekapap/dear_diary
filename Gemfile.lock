@@ -80,6 +80,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   flog
+  json
   pg
   pry
   rspec

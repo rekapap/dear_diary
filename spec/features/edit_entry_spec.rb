@@ -8,7 +8,7 @@ feature 'Editing a entry' do
     expect(current_path).to eq "/entries/#{entry.id}/edit"
 
     fill_in('title', with: "New Flog")
-    fill_in('body', with: "My new flog body")
+    fill_in('editordata', with: "My new flog body")
     click_button('Submit')
 
     expect(current_path).to eq "/entries/#{entry.id}"

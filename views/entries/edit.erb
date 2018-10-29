@@ -1,6 +1,37 @@
-<form action="/entries/<%= @entry.id %>" method="post">
-  <input type="hidden" name="_method" value="PATCH" />
-  <input type="text" name="title" value="<%= @entry.title %>" />
-  <input type="text" name="body" value="<%= @entry.body %>" />
-  <input type="submit" value="Submit" />
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dear Diary</title>
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+</head>
+<body>
+<div>
+  <form action="/entries/<%= @entry.id %>" method="post">
+    <input type="hidden" name="_method" value="PATCH" />
+    <div>
+      <label for="title">Title</label>
+      <br />
+      <input type="text" name="title" value="<%= @entry.title %>" />
+    </div>
+    <div>
+        <label for="body">Entry</label>
+        <input name="body" type="hidden">
+        <textarea id="summernote" name="editordata" ></textarea>
+    </div>
+    <div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#summernote').summernote('insertText', '<%= @entry.body %>');
+    });
+  </script>
+</body>
+</html>

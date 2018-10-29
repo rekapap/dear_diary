@@ -1,6 +1,7 @@
 require 'sinatra'
 require_relative './lib/entry'
 require_relative './database_connection_setup'
+require 'json'
 
 # DEAR DIARY
 class DearDiary < Sinatra::Base
@@ -20,7 +21,7 @@ class DearDiary < Sinatra::Base
   end
 
   post '/entries' do
-    Entry.create(title: params[:title], body: params[:body])
+    Entry.create(title: params[:title], body: params[:editordata])
     redirect '/entries'
   end
 
@@ -29,19 +30,21 @@ class DearDiary < Sinatra::Base
     erb :'entries/entry'
   end
 
+  delete '/entries/:id' do
+    Entry.delete(id: params[:id])
+    redirect '/entries'
+  end
+
   get '/entries/:id/edit' do
     @entry = Entry.find(id: params[:id])
     erb :'entries/edit'
   end
 
   patch '/entries/:id' do
-    Entry.update(id: params[:id], title: params[:title], body: params[:body])
+    params[:body]
+    # result = JSON.parse(param)['ops'].first['insert']
+    Entry.update(id: params[:id], title: params[:title], body: params[:editordata])
     redirect "/entries/#{params[:id]}"
-  end
-
-  delete '/entries/:id' do
-    Entry.delete(id: params[:id])
-    redirect '/entries'
   end
   
   run! if app_file == $PROGRAM_NAME
